@@ -9,27 +9,31 @@ public class PublicTransportation {
 
     // 기본 생성자 생성
     public PublicTransportation () { }
+
     // 운행시작
     public void start(String state){
         this.state = state;
     }
+
     // 상태 변경
     public void changeState() {
-        if(this.state.equals("운행")) {
-            this.state = "차고지행";
+        if(state.equals("운행")) {
+            state = "차고지행";
         } else {
-            this.state = "운행";
+            state = "운행";
         }
 
         if(oilAmount < 10) {
             this.state = "차고지행";
         }
     }
+
     // 속도변경
     public void setSpeed(int speed) {
         this.speed += speed;
         System.out.println("현재 속도는 : " + this.speed);
     }
+
     public int getNumber() {
         return number;
     }
@@ -41,12 +45,14 @@ public class PublicTransportation {
     }
     public void setOilAmount(int oilAmount) {
         this.oilAmount -= oilAmount;
+
         System.out.println("남아있는 주유양 : " + getOilAmount());
         if(oilAmount < 10) {
             changeState();
             System.out.println("주유 필요!");
         }
     }
+
     public int getSpeed() {
         return speed;
     }

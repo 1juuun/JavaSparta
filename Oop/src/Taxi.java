@@ -6,22 +6,23 @@ public class Taxi extends PublicTransportation{
     int distance = 1;
 
     public Taxi(int number) {
-        this.start("일반");
+        start("일반");
         this.number = number;
-        this.maxPassenger = 4;
-        this.price = 3000;
-        this.speed = 0;
+        maxPassenger = 4;
+        price = 3000;
+        speed = 0;
         System.out.println(number + "번 택시가 생성되었습니다.");
     }
 
     public void onTheTaxi(int newPassenger, String destination, int distanceDestination) {
 
-        this.currentPassenger = 0;
-        this.price = 3000;
-        this.maxPassenger = 4;
+        currentPassenger = 0;
+        price = 3000;
+        maxPassenger = 4;
 
         if (state.equals("일반") && newPassenger <= maxPassenger) {
-            this.currentPassenger += newPassenger;
+            currentPassenger += newPassenger;
+
             System.out.println("탑승 승객 : " + newPassenger);
             System.out.println("잔여 승객 : " + currentPassenger);
             System.out.println("기본 요금 확인 : " + price);
@@ -42,6 +43,7 @@ public class Taxi extends PublicTransportation{
     // 거리당 요금 추가
     public void addDistanceMoney(int distanceDestination) {
         price = 3000 + (distanceDestination - 1) * 1000;
+
         System.out.println("지불할 요금 : " + price);
         System.out.println("상태 : " + state);
     }
@@ -54,7 +56,7 @@ public class Taxi extends PublicTransportation{
     public void changeState() {
         super.changeState();
         if (oilAmount < 10) {
-            this.state = "운행불가";
+            state = "운행불가";
         }
     }
 
